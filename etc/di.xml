@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Deloitte\Alipay\Api\AlipayRepositoryInterface" type="Deloitte\Alipay\Model\ResourceModel\AlipayRepository" />
+    <preference for="Deloitte\Alipay\Api\Data\AlipaySearchResultInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Deloitte\Alipay\Api\Data\AlipayInterface" type="Deloitte\Alipay\Model\Data\Alipay" />
+    
+    <type name="Deloitte\Alipay\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Deloitte\Alipay\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">alipay</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Deloitte\Alipay\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
